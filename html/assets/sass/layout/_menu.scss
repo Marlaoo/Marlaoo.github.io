@@ -1,0 +1,203 @@
+.menu-toggle {
+    position: absolute;
+    z-index: 100;
+    bottom: 23rem;
+    right: 8.5rem;
+    width: 19.5rem;
+    height: 19.5rem;
+    opacity: 0;
+    transition: .3s ease, opacity .3s ease-in .8s, right .3s ease-out;
+    animation: spinZ 20s linear infinite;
+
+    &.active {
+        right: calc(max(40rem, 30%) - 9.75rem) !important;
+        z-index: 151;
+    }
+    
+    & div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8.8rem;
+        height: 8.8rem;
+        background-color: #D9D9D9;
+        border-radius: 50%;
+    }
+
+    & span {
+        position: absolute;
+		display: inline-block;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		transition: all .5s cubic-bezier(0,0,0,1);
+        font-size: 2.79rem;
+        font-family: 'Darker Grotesque', sans-serif;
+        font-weight: 500;
+        line-height: 3.8rem;
+        color: #d9d9d9;
+    }
+
+    &:not(:hover),
+    &:not(.active) {
+        & span {
+            &.hiding {
+                animation: hideText 10s ease-in-out infinite;
+            }
+        }
+    }
+
+    &:hover,
+    &.active {
+        animation-play-state: paused;
+
+        & span {
+            & span {
+                opacity: 0;
+
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.menu {
+    position: absolute;
+    z-index: 50;
+    bottom: 2px;
+    right: 2px;
+    height: calc(100% - 6.5rem);
+    border-radius: 0px 0px 4rem 0px;
+    padding: 6.4rem 10rem 5rem;
+    width: 100%;
+    max-width: 0;
+    overflow: hidden;
+    transition: .5s ease-out;
+    
+    &.active {
+        background: #232222;
+        max-width: max(40rem, 30%);
+        z-index: 150;
+
+        & .menu__list {
+            & a {
+                opacity: 1;
+                transform: translateX(0);
+
+                &:nth-child(1) {
+                    transition: transform .3s ease-out .2s, opacity .3s ease 0s;
+                }
+                &:nth-child(2) {
+                    transition: transform .3s ease-out .4s, opacity .3s ease 0s;
+                }
+                &:nth-child(3) {
+                    transition: transform .3s ease-out .6s, opacity .3s ease 0s;
+                }
+                &:nth-child(4) {
+                    transition: transform .3s ease-out .8s, opacity .3s ease 0s;
+                }
+                
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        
+        & a {
+            font-weight: 400;
+            font-size: 3.1rem;
+            line-height: 3.8rem;
+            text-align: right;
+            text-transform: uppercase;
+            position: relative;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(calc(100% + 5rem));
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background-color: #d9d9d9;
+                transition: .6s ease-out;
+                position: absolute;
+                left: -1.2rem;
+                top: 2rem;
+                transform: translate(-50%, -50%);
+            }
+
+            &:hover,
+            &.active {
+                &::before {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+
+            &:nth-child(1) {
+                transition: transform 0s;
+            }
+            &:nth-child(2) {
+                transition: transform 0s;
+            }
+            &:nth-child(3) {
+                transition: transform 0s;
+            }
+            &:nth-child(4) {
+                transition: transform 0s;
+            }
+            
+            & span {
+                display: block;
+                font-size: 2.3rem;
+                line-height: 2.1rem;
+                font-family: 'Darker Grotesque', sans-serif;
+            }
+            
+            &:not(:last-child) {
+                margin-bottom: 8.6rem;
+            }
+        }
+    }
+}
+
+@keyframes spinZ {
+    0% {
+        transform: rotateZ(360deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes hideText {
+    0% {
+        transform: scale(1);
+    }
+    85% {
+        transform: scale(1);
+    }
+    90% {
+        transform: scale(.4);
+    }
+    95% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

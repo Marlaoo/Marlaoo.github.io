@@ -1,0 +1,40 @@
+.skills {
+    & .oppening {
+        &__container {
+            & h2 {
+                & > span {
+                    &:first-of-type {
+                        font-size: 6.421rem;
+                        font-family: 'Cormorant Garamond', sans-serif;
+                        margin-left: 0;
+                    }
+
+                    &:last-of-type {
+                        font-size: 9.5rem;
+                    }
+                }
+            }
+        }
+    }    
+
+    & .menu-toggle {
+        right: calc(50% - 9.75rem);
+        bottom: 4rem;
+    }
+
+    & #enhance {
+        &:hover {
+            & > .outer {
+                &:nth-child(3) {
+                    transform: translate(-60%, -40%) rotate(-15deg);
+                }
+            }
+        }
+    }
+    
+    & #video {
+        &.active {
+            top: 75%;
+        }
+    }
+}

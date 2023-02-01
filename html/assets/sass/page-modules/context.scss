@@ -1,0 +1,40 @@
+.context {
+    position: relative; 
+    margin-top: 5rem;
+
+    & .explanation {
+        display: block;
+        margin: 2rem 0 0;
+        max-width: 63rem;
+        font-family: 'Cormorant Garamond', sans-serif;
+        font-size: 1.8rem;
+        line-height: 1.4;
+        color: #fff;
+        font-weight: 300;
+    }
+
+    &__text {
+        max-width: 63rem;
+        
+        & p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: #fff;
+            font-weight: 300;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            & a {
+                text-decoration: underline;
+            }
+
+            & *[data-explanation] {
+                font-weight: 900;
+                color: #d9d9d9;
+            }
+        }
+    }
+}

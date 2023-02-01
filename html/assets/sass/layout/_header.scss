@@ -1,0 +1,39 @@
+.header {
+    background-color: #B5B5B5;
+    border-radius: 4rem 4rem 0 0;
+    width: 100%;
+    transition: .3s ease;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.3rem 0 1.4rem;
+
+        & > span {
+            font-family: "Darker Grotesque", sans-serif;
+            font-size: 2.707rem;
+            line-height: 3.6rem;
+            color: #747474;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+    }
+
+    &__breadcrumb {
+        display: flex;
+        align-items: center;
+
+        & * {
+            font-family: "Darker Grotesque", sans-serif;
+            font-size: 2.707rem;
+            line-height: 3.6rem;
+            color: #747474;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.home {
+    & #video {
+        &.active {
+            top: 45%;
+        }
+    }
+}

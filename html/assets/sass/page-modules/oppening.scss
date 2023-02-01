@@ -1,0 +1,165 @@
+.oppening {
+    padding: 6.4rem 0 0;
+    display: flex;
+    position: relative;
+
+    & .detail {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%) rotate(180deg);
+        font-size: 2.17rem;
+        line-height: 2.9rem;
+        opacity: .3;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        display: inline-block;
+        writing-mode: tb-rl;
+        height: 100%;
+        text-align: center;
+    }
+
+    &__left {
+        flex: 1;
+    }
+
+    &__right {
+        flex: 0 0 45%;
+    }
+
+    &__container {
+        position: relative;
+
+        & h2 {
+            font-size: 9.5rem;
+            font-weight: 400;
+            line-height: 7rem;
+
+            & > span {
+                margin-left: 4.6rem;
+                font-family: 'Darker Grotesque', sans-serif;
+                font-size: 9.5rem;
+                font-weight: 400;
+    
+                &:last-of-type {
+                    margin: 0;
+                    font-size: 8.209rem;
+                    line-height: 7rem;
+                    font-weight: 400;
+                    font-family: 'Cormorant Garamond', sans-serif;;
+                }
+            }
+        }
+    }
+}
+
+#enhance {
+    & span {
+        display: inline-block;
+    }
+
+    & > .outer {
+        transition: transform 350ms ease;
+    }
+
+    &:hover {
+
+        & > .outer {
+            transition-duration: 800ms;
+            
+            &:nth-child(1) {
+                transform: translate(-80%, 60%) rotate(8deg);
+            }
+            
+            &:nth-child(2) {
+                transform: translate(-40%, 20%) rotate(4deg);
+            }
+            
+            &:nth-child(3) {
+                transform: translate(-10%, 60%) rotate(-6deg);
+            }
+            
+            &:nth-child(4) {
+                transform: translate(0%, 8%) rotate(-8deg);
+            }
+            
+            &:nth-child(5) {
+                transform: translate(0%, -20%) rotate(5deg);
+            }
+            
+            &:nth-child(6) {
+                transform: translate(0%, 20%) rotate(-3deg);
+            }
+            
+            &:nth-child(7) {
+                transform: translate(0%, -40%) rotate(-5deg);
+            }
+            
+            &:nth-child(8) {
+                transform: translate(0%, 15%) rotate(10deg);
+            }
+            
+            &:nth-child(9) {
+                transform: translate(0%, -50%) rotate(8deg);
+            }
+            
+            &:nth-child(10) {
+                transform: translate(0%, 15%) rotate(-6deg);
+            }
+            
+            &:nth-child(11) {
+                transform: translate(50%, -10%) rotate(-3deg);
+            }
+            
+            &:nth-child(12) {
+                transform: translate(120%, -30%) rotate(-10deg);
+            }
+            
+            &:nth-child(12) {
+                transform: translate(120%, -30%) rotate(-10deg);
+            }
+            
+            &:nth-child(13) {
+                transform: translate(120%, 20%) rotate(20deg);
+            }
+        }
+
+        & > .outer > .inner {
+            animation: float 5s ease infinite;
+
+            & > .letter {
+                font-weight: 700;
+                background: linear-gradient(
+                    to right,
+                    #5F4B8B,
+                    #D9D9D9,
+                    #5F4B8B
+                );
+                background-size: 500%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: background-pan 15s linear infinite;
+            }
+        }
+    }
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 500% center;
+    }
+
+    to {
+        background-position: 0% center;
+    }
+}
+
+@keyframes float {
+    from, to {
+        transform: translateY(-0%);
+    }
+    
+    50% {    
+        transform: translateY(-3%);
+    }
+}

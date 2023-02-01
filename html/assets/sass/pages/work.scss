@@ -1,0 +1,60 @@
+.work {
+    & .folder {
+        &:not(.closed) {
+            & .menu-toggle {
+                transition: .3s ease, opacity .3s ease-in .8s, right .3s ease-out, translate .3s ease-out .8s;
+                translate: 0 9.75rem;
+            }
+        }
+    }
+    
+    & .oppening {
+        height: 100%;
+        padding: 1rem 0 10rem;
+
+        &__left {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+    & .menu-toggle {
+        animation-play-state: paused;
+        &:not(.active):not(:hover) {
+            filter: blur(1px);
+        }
+        right: calc(50% - 9.75rem);
+        bottom: -9.75rem;
+        bottom: 0;
+
+        
+        & span {
+            &.hiding {
+                animation-play-state: paused;
+            }
+        }
+    }
+
+    & #enhance {
+        &:hover {
+            & > .outer {
+                &:nth-child(1) {
+                    transform: translate(-60%, -40%) rotate(-15deg);
+                }
+                
+                &:nth-child(2) {
+                    transform: translate(-20%, 30%) rotate(25deg);
+                }
+            }
+        }
+    }
+    
+    & #video {
+        top: 75%;
+        left: 50%;
+
+        &.active {
+            transform: translate(-100%, 0%);
+        }
+    }
+}
