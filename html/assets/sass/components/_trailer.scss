@@ -53,6 +53,14 @@ body:has(.header:hover) {
         transition: .3s ease;
 
     }
+
+    @include max(1280) {
+        display: none;
+
+        & + span {
+            display: none;
+        }
+    }
 }
 
 @keyframes bounce {

@@ -8,11 +8,18 @@ window.addEventListener('DOMContentLoaded', function(){
             toggleText(false)
             $j('.menu').dataset.type = 'drag-left'
         } else {
+            window.scrollTo(0, 0)
             this.classList.add('active')
             this.setAttribute('title', 'Fechar menu')
             $j('.menu').classList.add('active')
             toggleText(true)
             $j('.menu').dataset.type = 'drag-right'
+        }
+    })
+
+    $j('.menu').addEventListener('blur', function(){
+        if ( this.classList.contains('active') ) {
+            $j('.menu-toggle').click();
         }
     })
 

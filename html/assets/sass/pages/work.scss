@@ -1,3 +1,5 @@
+@import '../abstracts/utilities';
+
 .work {
     & .folder {
         &:not(.closed) {
@@ -15,6 +17,10 @@
         &__left {
             display: flex;
             flex-direction: column;
+        }
+
+        @include max(800) {
+            flex: 1;
         }
     }
     
@@ -55,6 +61,23 @@
 
         &.active {
             transform: translate(-100%, 0%);
+        }
+
+        @include max(800) {
+            
+            &.active {
+                top: unset;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-100%, 0%);
+            }
+        }
+    }
+
+    @include max(800) {
+        & main {
+            display: flex;
+            flex-direction: column;
         }
     }
 }

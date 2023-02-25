@@ -1,3 +1,13 @@
+@include min(1280) {
+    body:has(.menu:focus-within ),
+    body:has(.menu:focus ) {
+        & .menu-toggle {
+            right: calc(max(40rem, 30%) - 9.75rem) !important;
+            z-index: 151;
+        }
+    }
+}
+
 .menu-toggle {
     position: absolute;
     z-index: 100;
@@ -7,7 +17,9 @@
     height: 19.5rem;
     opacity: 0;
     transition: .3s ease, opacity .3s ease-in .8s, right .3s ease-out;
-    animation: spinZ 20s linear infinite;
+    @include min(801) {
+        animation: spinZ 20s linear infinite;
+    }
 
     &.active {
         right: calc(max(40rem, 30%) - 9.75rem) !important;
@@ -40,11 +52,13 @@
         color: #d9d9d9;
     }
 
-    &:not(:hover),
-    &:not(.active) {
-        & span {
-            &.hiding {
-                animation: hideText 10s ease-in-out infinite;
+    @include min(1280) {
+        &:not(:hover),
+        &:not(.active) {
+            & span {
+                &.hiding {
+                    animation: hideText 10s ease-in-out infinite;
+                }
             }
         }
     }
@@ -67,6 +81,29 @@
             }
         }
     }
+
+    @include max(500) {
+        right: calc(50% - 9.75rem) !important;
+        bottom: 4rem !important;
+
+        & span {
+            & span {
+                opacity: 0;
+
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    opacity: 1;
+                }
+            }
+        }
+        
+        &.active {
+            right: calc(50% - 9.75rem) !important;
+        }
+    }
 }
 
 .menu {
@@ -82,7 +119,9 @@
     overflow: hidden;
     transition: .5s ease-out;
     
-    &.active {
+    &.active,
+    &:focus,
+    &:focus-within {
         background: #232222;
         max-width: max(40rem, 30%);
         z-index: 150;
@@ -171,6 +210,29 @@
             &:not(:last-child) {
                 margin-bottom: 8.6rem;
             }
+        }
+
+        @include max(800) {
+            // position: fixed;
+            // right: 5%;
+            // top: 6.4rem;
+        }
+    }
+
+    @include max(800) {
+        top: 2px;
+        border-radius: 2rem 2rem 0 0;
+        height: calc(100% - 6.1rem);
+    }
+
+    @include max(500) {
+        padding: 6.4rem 0 5rem;
+        
+        &.active,
+        &:focus,
+        &:focus-within {
+            padding: 6.4rem 5% 5rem;
+            max-width: calc(100% - 4px);
         }
     }
 }
