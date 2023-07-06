@@ -1,7 +1,11 @@
+@import '../abstracts/utilities';
+
 .oppening {
     padding: 6.4rem 0 0;
     display: flex;
     position: relative;
+    height: 100%;
+    max-height: 100%;
 
     & .detail {
         position: absolute;
@@ -21,6 +25,8 @@
 
     &__left {
         flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     &__right {
@@ -51,6 +57,10 @@
             }
         }
     }
+
+    @include max(800) {
+        flex-direction: column;
+    }
 }
 
 #enhance {
@@ -62,85 +72,92 @@
         transition: transform 350ms ease;
     }
 
-    &:hover {
+    @include min(1280) {
+        &:hover {
 
-        & > .outer {
-            transition-duration: 800ms;
-            
-            &:nth-child(1) {
-                transform: translate(-80%, 60%) rotate(8deg);
+            & > .outer {
+                transition-duration: 800ms;
+                
+                &:nth-child(1) {
+                    transform: translate(-80%, 60%) rotate(8deg);
+                }
+                
+                &:nth-child(2) {
+                    transform: translate(-40%, 20%) rotate(4deg);
+                }
+                
+                &:nth-child(3) {
+                    transform: translate(-10%, 60%) rotate(-6deg);
+                }
+                
+                &:nth-child(4) {
+                    transform: translate(0%, 8%) rotate(-8deg);
+                }
+                
+                &:nth-child(5) {
+                    transform: translate(0%, -20%) rotate(5deg);
+                }
+                
+                &:nth-child(6) {
+                    transform: translate(0%, 20%) rotate(-3deg);
+                }
+                
+                &:nth-child(7) {
+                    transform: translate(0%, -40%) rotate(-5deg);
+                }
+                
+                &:nth-child(8) {
+                    transform: translate(0%, 15%) rotate(10deg);
+                }
+                
+                &:nth-child(9) {
+                    transform: translate(0%, -50%) rotate(8deg);
+                }
+                
+                &:nth-child(10) {
+                    transform: translate(0%, 15%) rotate(-6deg);
+                }
+                
+                &:nth-child(11) {
+                    transform: translate(50%, -10%) rotate(-3deg);
+                }
+                
+                &:nth-child(12) {
+                    transform: translate(120%, -30%) rotate(-10deg);
+                }
+                
+                &:nth-child(12) {
+                    transform: translate(120%, -30%) rotate(-10deg);
+                }
+                
+                &:nth-child(13) {
+                    transform: translate(120%, 20%) rotate(20deg);
+                }
             }
-            
-            &:nth-child(2) {
-                transform: translate(-40%, 20%) rotate(4deg);
-            }
-            
-            &:nth-child(3) {
-                transform: translate(-10%, 60%) rotate(-6deg);
-            }
-            
-            &:nth-child(4) {
-                transform: translate(0%, 8%) rotate(-8deg);
-            }
-            
-            &:nth-child(5) {
-                transform: translate(0%, -20%) rotate(5deg);
-            }
-            
-            &:nth-child(6) {
-                transform: translate(0%, 20%) rotate(-3deg);
-            }
-            
-            &:nth-child(7) {
-                transform: translate(0%, -40%) rotate(-5deg);
-            }
-            
-            &:nth-child(8) {
-                transform: translate(0%, 15%) rotate(10deg);
-            }
-            
-            &:nth-child(9) {
-                transform: translate(0%, -50%) rotate(8deg);
-            }
-            
-            &:nth-child(10) {
-                transform: translate(0%, 15%) rotate(-6deg);
-            }
-            
-            &:nth-child(11) {
-                transform: translate(50%, -10%) rotate(-3deg);
-            }
-            
-            &:nth-child(12) {
-                transform: translate(120%, -30%) rotate(-10deg);
-            }
-            
-            &:nth-child(12) {
-                transform: translate(120%, -30%) rotate(-10deg);
-            }
-            
-            &:nth-child(13) {
-                transform: translate(120%, 20%) rotate(20deg);
+
+            & > .outer > .inner {
+                animation: float 5s ease infinite;
+
+                & > .letter {
+                    font-weight: 700;
+                    background: linear-gradient(
+                        to right,
+                        #5F4B8B,
+                        #D9D9D9,
+                        #5F4B8B
+                    );
+                    background-size: 500%;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: background-pan 15s linear infinite;
+                }
             }
         }
+    }
 
-        & > .outer > .inner {
-            animation: float 5s ease infinite;
-
-            & > .letter {
-                font-weight: 700;
-                background: linear-gradient(
-                    to right,
-                    #5F4B8B,
-                    #D9D9D9,
-                    #5F4B8B
-                );
-                background-size: 500%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: background-pan 15s linear infinite;
-            }
-        }
+    @include max(1280) {
+        // ativar a animação por javascript
     }
 }
 

@@ -20,17 +20,43 @@ window.addEventListener('DOMContentLoaded', function(){
             }, 300);
         } else if (clickCounter === 2) {
             clearTimeout(clickTimer);
-            $j('.folder').classList.toggle('full')
-            updateMaximize($j('.folder').classList.contains('full'))
+            $j('.folder').classList.toggle('fullscreen')
+            if ( $j('.folder').classList.contains('fullscreen') ) {
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+            
+            updateMaximize($j('.folder').classList.contains('fullscreen'))
 
             clickCounter = 0;
         }
     })
 
-    $j('#video').addEventListener('canplay', function(){
-        this.classList.add('active')
-    })
+    if ( $j('#video') ) {
+        $j('#video').addEventListener('canplay', function(){
+            this.classList.add('active')
+        })
+    }
 
+    if ( window.innerWidth < 800 ) {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+        
     setTimeout(() => {
         $j('.folder').classList.remove('closed')
         setTimeout(() => {
@@ -59,33 +85,39 @@ window.addEventListener('scroll', function(){
     // }
 
     // lastScrollTop = st;
+
+    if ( window.innerWidth < 800 ) {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
     wrapperDistance()
 })
 
-window.addEventListener('wheel', function(event){
-    if ( event.target.tagName === 'DIV' ) {
-        if ( getComputedStyle(event.target)['overflow'] == 'auto' ) return;
-    } else {
-        if ( getComputedStyle(event.target.closest('div'))['overflow'] == 'auto' ) return;
-    }
-    
-    if (event.deltaY > 0) {
-        $j('.folder').style.transform = 'rotateY(0) rotateX(-4deg) translateY(calc(-50% - 2rem)) translateX(-50%)';
-        $j('.menu-toggle').style.translate = '0 2rem';
-        setTimeout(() => {
-            $j('.folder').style.transform = 'translate(-50%, -50%)'
-            $j('.menu-toggle').style.translate = '-0';
-        }, 400);
-    } else if (event.deltaY < 0) {
-        $j('.folder').style.transform = 'rotateY(0) rotateX(4deg) translateY(calc(-50% + 30px)) translateX(-50%)';
-        $j('.menu-toggle').style.translate = '0 -2rem';
-        setTimeout(() => {
-            $j('.folder').style.transform = 'translate(-50%, -50%)'
-            $j('.menu-toggle').style.translate = '0';
-        }, 400);
-    }
-})
-
+if ( window.innerWidth > 1280 ) {
+    window.addEventListener('wheel', function(event){
+        if ( event.target.tagName === 'DIV' ) {
+            if ( getComputedStyle(event.target)['overflow'] == 'auto' ) return;
+        } else {
+            if ( getComputedStyle(event.target.closest('div'))['overflow'] == 'auto' ) return;
+        }
+        
+        if (event.deltaY > 0) {
+            $j('.folder').style.transform = 'rotateY(0) rotateX(-4deg) translateY(calc(-50% - 2rem)) translateX(-50%)';
+            $j('.menu-toggle').style.translate = '0 2rem';
+            setTimeout(() => {
+                $j('.folder').style.transform = 'translate(-50%, -50%)'
+                $j('.menu-toggle').style.translate = '-0';
+            }, 400);
+        } else if (event.deltaY < 0) {
+            $j('.folder').style.transform = 'rotateY(0) rotateX(4deg) translateY(calc(-50% + 30px)) translateX(-50%)';
+            $j('.menu-toggle').style.translate = '0 -2rem';
+            setTimeout(() => {
+                $j('.folder').style.transform = 'translate(-50%, -50%)'
+                $j('.menu-toggle').style.translate = '0';
+            }, 400);
+        }
+    })
+}
 /*
  * Functions
  */
@@ -111,18 +143,20 @@ function updateMaximize(maximized) {
         if ( isMaximized == null ) return;
 
         if ( isMaximized === 'true' ) {
-            $j('.folder').classList.add('full')
+            $j('.folder').classList.add('fullscreen')
+            // document.documentElement.requestFullscreen();
         } else {
-            $j('.folder').classList.remove('full')
+            $j('.folder').classList.remove('fullscreen')
         }
         return;
     }
     
     if ( maximized ) {
         window.localStorage.setItem('maximized', 'true')
-        $j('.folder').classList.add('full')
+        $j('.folder').classList.add('fullscreen')
+        // document.documentElement.requestFullscreen();
     } else {
         window.localStorage.setItem('maximized', 'false')
-        $j('.folder').classList.remove('full')
+        $j('.folder').classList.remove('fullscreen')
     }
 }

@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function(){
             toggleText(false)
             $j('.menu').dataset.type = 'drag-left'
         } else {
+            window.scrollTo(0, 0)
             this.classList.add('active')
             this.setAttribute('title', 'Fechar menu')
             $j('.menu').classList.add('active')
@@ -16,18 +17,24 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     })
 
+    $j('.menu').addEventListener('blur', function(){
+        if ( this.classList.contains('active') ) {
+            $j('.menu-toggle').click();
+        }
+    })
+
     let mouseIsDown = false;
     let startX = 0;
     let endX = 0;
     let starter = ''
 
-    document.querySelector('.menu').addEventListener("mousedown", function(e) {
+    $j('.menu').addEventListener("mousedown", function(e) {
         mouseIsDown = true;
         startX = e.clientX;
         starter = this;
     });
 
-    document.querySelector('.menu').addEventListener("mousemove", function(e) {
+    $j('.menu').addEventListener("mousemove", function(e) {
         if (mouseIsDown) {
             endX = e.clientX;
         }
@@ -39,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 $j('.menu-toggle').click();
             }
             if (endX > startX && starter.dataset.type === 'drag-right') {
-                $j('.menu-toggle').click();
+                $j('.menu').blur();
             }
         }
         starter = '';

@@ -5,7 +5,7 @@ body:hover > #trailer {
 body:has(.header:hover) {
     #trailer {
         &::before {
-            // animation: bounce 1s ease-in-out 1.5s normal;
+            animation: bounce 1s ease-in-out 1.5s normal;
         }
     }
 }
@@ -52,6 +52,14 @@ body:has(.header:hover) {
         border-radius: 50%;
         transition: .3s ease;
 
+    }
+
+    @include max(1280) {
+        display: none;
+
+        & + span {
+            display: none;
+        }
     }
 }
 

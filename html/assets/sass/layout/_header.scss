@@ -34,6 +34,16 @@
             color: #747474;
             text-transform: uppercase;
             font-weight: 400;
+
+            @include max(800) {
+                font-size: 2.4rem;
+                line-height: 3.2rem;
+            }
         }
+    }
+
+    @include max(800) {
+        order: 1;
+        border-radius: 0 0 2rem 2rem;
     }
 }

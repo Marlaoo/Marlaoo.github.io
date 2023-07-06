@@ -1,3 +1,5 @@
+@import '../abstracts/utilities';
+
 .s-skills {
     list-style: none;
     padding: 5rem;
@@ -29,6 +31,10 @@
             display: block;
             opacity: 1;
             transition: opacity .3s ease;
+    
+            @include max(800) {
+                font-size: 1.8rem;
+            }
         }
 
         & svg,
@@ -42,6 +48,7 @@
             opacity: 0;
             transition: opacity .3s ease;
 
+            & circle,
             & path {
                 fill: #d9d9d9;
             }
@@ -51,7 +58,7 @@
             filter: invert(1);
         }
 
-        &--mag {
+        &--stroke {
             & svg {
                 & path {
                     &:first-child {
@@ -79,5 +86,13 @@
                 max-width: 0% !important;
             }
         }
+    
+        @include max(800) {
+            padding: 0 1.5rem;
+        }
+    }
+    
+    @include max(800) {
+        padding: 5rem 5% 17.5rem;
     }
 }

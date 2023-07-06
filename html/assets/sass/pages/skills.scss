@@ -1,3 +1,5 @@
+@import '../abstracts/utilities';
+
 .skills {
     & .oppening {
         &__container {
@@ -7,18 +9,32 @@
                         font-size: 6.421rem;
                         font-family: 'Cormorant Garamond', sans-serif;
                         margin-left: 0;
+
+                        @include max(800) {
+                            font-size: 4.5rem;
+                        }
                     }
 
                     &:last-of-type {
                         font-size: 9.5rem;
+
+                        @include max(800) {
+                            font-size: 6.5rem;
+                        }
                     }
                 }
+            }
+        }
+
+        @include max(800) {
+            & .context {
+                padding-bottom: 0;
             }
         }
     }    
 
     & .menu-toggle {
-        right: calc(50% - 9.75rem);
+        right: calc(45% - 18rem);
         bottom: 4rem;
     }
 
@@ -35,6 +51,16 @@
     & #video {
         &.active {
             top: 75%;
+        }
+
+        @include max(800) {
+            
+            &.active {
+                top: unset;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-100%, 0%);
+            }
         }
     }
 }
