@@ -20,8 +20,27 @@ window.addEventListener('DOMContentLoaded', function(){
             }, 300);
         } else if (clickCounter === 2) {
             clearTimeout(clickTimer);
-            $j('.folder').classList.toggle('full')
-            updateMaximize($j('.folder').classList.contains('full'))
+            $j('.folder').classList.toggle('fullscreen')
+            if ( $j('.folder').classList.contains('fullscreen') ) {
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+            
+            updateMaximize($j('.folder').classList.contains('fullscreen'))
 
             clickCounter = 0;
         }
@@ -124,18 +143,20 @@ function updateMaximize(maximized) {
         if ( isMaximized == null ) return;
 
         if ( isMaximized === 'true' ) {
-            $j('.folder').classList.add('full')
+            $j('.folder').classList.add('fullscreen')
+            // document.documentElement.requestFullscreen();
         } else {
-            $j('.folder').classList.remove('full')
+            $j('.folder').classList.remove('fullscreen')
         }
         return;
     }
     
     if ( maximized ) {
         window.localStorage.setItem('maximized', 'true')
-        $j('.folder').classList.add('full')
+        $j('.folder').classList.add('fullscreen')
+        // document.documentElement.requestFullscreen();
     } else {
         window.localStorage.setItem('maximized', 'false')
-        $j('.folder').classList.remove('full')
+        $j('.folder').classList.remove('fullscreen')
     }
 }

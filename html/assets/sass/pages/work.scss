@@ -7,6 +7,10 @@
                 transition: .3s ease, opacity .3s ease-in .8s, right .3s ease-out, translate .3s ease-out .8s;
                 translate: 0 9.75rem;
             }
+
+            & main {
+                max-height: 100%;
+            }
         }
     }
     
@@ -15,8 +19,7 @@
         padding: 1rem 0 10rem;
 
         &__left {
-            display: flex;
-            flex-direction: column;
+            overflow: hidden;
         }
 
         @include max(800) {

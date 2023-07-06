@@ -48,6 +48,7 @@
             opacity: 0;
             transition: opacity .3s ease;
 
+            & circle,
             & path {
                 fill: #d9d9d9;
             }
@@ -57,7 +58,7 @@
             filter: invert(1);
         }
 
-        &--mag {
+        &--stroke {
             & svg {
                 & path {
                     &:first-child {

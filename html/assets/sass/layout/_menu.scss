@@ -116,12 +116,14 @@
     padding: 6.4rem 10rem 5rem;
     width: 100%;
     max-width: 0;
+    opacity: 0;
     overflow: hidden;
     transition: .5s ease-out;
     
     &.active,
     &:focus,
     &:focus-within {
+        opacity: 1;
         background: #232222;
         max-width: max(40rem, 30%);
         z-index: 150;
@@ -143,7 +145,9 @@
                 &:nth-child(4) {
                     transition: transform .3s ease-out .8s, opacity .3s ease 0s;
                 }
-                
+                &:nth-child(5) {
+                    transition: transform .3s ease-out 1s, opacity .3s ease 0s;
+                }
             }
         }
     }
@@ -153,6 +157,12 @@
         flex-direction: column;
         align-items: flex-end;
         text-align: right;
+
+        &:hover {
+            & a {
+                opacity: .4 !important;
+            }
+        }
         
         & a {
             font-weight: 400;
@@ -181,6 +191,7 @@
 
             &:hover,
             &.active {
+                opacity: 1 !important;
                 &::before {
                     width: 1.5rem;
                     height: 1.5rem;
@@ -197,6 +208,9 @@
                 transition: transform 0s;
             }
             &:nth-child(4) {
+                transition: transform 0s;
+            }
+            &:nth-child(5) {
                 transition: transform 0s;
             }
             

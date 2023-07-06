@@ -5,7 +5,7 @@ body:hover > #trailer {
 body:has(.header:hover) {
     #trailer {
         &::before {
-            // animation: bounce 1s ease-in-out 1.5s normal;
+            animation: bounce 1s ease-in-out 1.5s normal;
         }
     }
 }

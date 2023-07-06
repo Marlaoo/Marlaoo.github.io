@@ -1,7 +1,7 @@
 .w-work {
     margin-top: 3rem;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     flex: 1;
     width: 100%;
 
@@ -31,10 +31,13 @@
         // min-width: 30vw;
         aspect-ratio: 16 / 10;
         height: calc(50% - 1.5rem);
-        background-color: rgba(255, 255, 255, 0.1);
+        // background-color: rgba(255, 255, 255, 0.1);
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
         border-radius: 10px;
+        perspective : 800px;
+        transform: perspective(800px);
+        transform-style: preserve-3d;
 
         &:hover{
 
@@ -46,10 +49,9 @@
             }
         }
 
-        &::before,
-        &::after {
-            border-radius: inherit;
+        &::before {
             content: "";
+            border-radius: inherit;
             height: 100%;
             left: 0px;
             opacity: 0;
@@ -57,24 +59,12 @@
             top: 0px;
             transition: opacity 500ms;
             width: 100%;
-        }
-
-        &::before {
             background: radial-gradient(
                 800px circle at var(--mouse-x) var(--mouse-y), 
                 rgba(255, 255, 255, 0.06),
                 transparent 40%
-            );
+                );
             z-index: 3;
-        }
-
-        &::after {  
-            background: radial-gradient(
-                600px circle at var(--mouse-x) var(--mouse-y), 
-                rgba(255, 255, 255, 0.4),
-                transparent 40%
-            );
-            z-index: 1;
         }
     }
 

@@ -1,7 +1,35 @@
 window.addEventListener('DOMContentLoaded', function() {
     $$j('.w-work__item').forEach(function(item) {
-        item.addEventListener('click', function() {
-            // console.log(this)
+        var clearTransform;
+
+        item.addEventListener('mousemove', function(e) {
+            let width = this.offsetWidth
+            let height = this.offsetHeight
+
+            let mouseX = e.pageX - this.getBoundingClientRect().left - width / 2
+            let mouseY = e.pageY - this.getBoundingClientRect().top - height / 2
+
+            let mousePX = mouseX / width
+            let mousePY = mouseY / height
+
+            let rX = mousePX * 10
+            let rY = mousePY * -10
+
+            this.querySelector('.w-work__content').animate({
+                transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
+            }, { duration: 300, fill: "forwards" });
+        })
+
+        item.addEventListener('mouseleave', function(e) {
+            clearTransform = setTimeout(() => {
+                this.querySelector('.w-work__content').animate({
+                    transform: `rotateY(0deg) rotateX(0deg)`
+                }, { duration: 300, fill: "forwards" });
+            }, 1000);
+        })
+
+        item.addEventListener('mouseenter', function(e) {
+            clearTimeout(clearTransform)
         })
     })
     

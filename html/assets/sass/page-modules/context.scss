@@ -3,6 +3,8 @@
 .context {
     position: relative; 
     margin-top: 5rem;
+    flex: 1;
+    overflow: hidden;
 
     & .explanation {
         display: block;
@@ -17,6 +19,28 @@
 
     &__text {
         max-width: 63rem;
+        max-height: 65%;
+        padding-right: 2rem;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: .7rem;
+            
+            &-track {
+                background: inherit;
+                background: transparent;
+            }
+            
+            &-thumb {
+                background: #b5b5b5;
+                border-radius: 8px;
+                transition: .3s ease;
+                
+                &:hover {
+                    background: darken(#b5b5b5, 30%);
+                }
+            }
+        }
         
         & p {
             font-family: 'Open Sans', sans-serif;

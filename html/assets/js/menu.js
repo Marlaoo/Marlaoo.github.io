@@ -28,13 +28,13 @@ window.addEventListener('DOMContentLoaded', function(){
     let endX = 0;
     let starter = ''
 
-    document.querySelector('.menu').addEventListener("mousedown", function(e) {
+    $j('.menu').addEventListener("mousedown", function(e) {
         mouseIsDown = true;
         startX = e.clientX;
         starter = this;
     });
 
-    document.querySelector('.menu').addEventListener("mousemove", function(e) {
+    $j('.menu').addEventListener("mousemove", function(e) {
         if (mouseIsDown) {
             endX = e.clientX;
         }
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 $j('.menu-toggle').click();
             }
             if (endX > startX && starter.dataset.type === 'drag-right') {
-                $j('.menu-toggle').click();
+                $j('.menu').blur();
             }
         }
         starter = '';
