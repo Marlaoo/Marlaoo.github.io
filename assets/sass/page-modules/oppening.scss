@@ -10,11 +10,11 @@
     & .detail {
         position: absolute;
         top: 50%;
-        left: 0;
-        transform: translateY(-50%) rotate(180deg);
+        right: 0;
+        transform: translateY(-50%);
         font-size: 2.17rem;
         line-height: 2.9rem;
-        opacity: .3;
+        opacity: .6;
         font-weight: 400;
         font-family: 'Open Sans', sans-serif;
         display: inline-block;
