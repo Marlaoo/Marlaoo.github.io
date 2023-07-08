@@ -107,4 +107,27 @@ window.addEventListener('DOMContentLoaded', function() {
         drag = true;
         handleOnMove(e.touches[0]);
     })
+    
+    if ( this.innerWidth < 768 ) {
+        const workItems = $$j('.w-work__item');
+        
+        const options = {
+            threshold: 0.3 // Define a porcentagem mínima de visibilidade requerida (30% neste caso)
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log(entry.target)
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+        }, options);
+        
+        workItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
 })
