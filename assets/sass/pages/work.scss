@@ -8,9 +8,9 @@
                 translate: 0 9.75rem;
             }
 
-            & main {
-                max-height: 100%;
-            }
+            // & main {
+            //     max-height: 100%;
+            // }
         }
     }
     
@@ -82,5 +82,37 @@
             display: flex;
             flex-direction: column;
         }
+    }
+}
+
+.foot-note {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    background-color: #b5b5b5;
+    color: #000;
+    z-index: 100;
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    font-family: "Darker Grotesque",sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 2.4rem 2.4rem 0 2.4rem;
+    transform: scale(0);
+}
+
+.foot-note.visible {
+    animation: messageInserted .5s ease forwards;
+}
+
+@keyframes messageInserted {
+    0% {
+        transform: scale(0);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }

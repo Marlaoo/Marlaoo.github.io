@@ -1,11 +1,10 @@
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const enhance = id => {
-  const element = document.getElementById(id),
-        text = element.innerText.split("");
-  
+function enhanceElement(element) {
+  const text = element.innerText.split("");
+
   element.innerText = "";
-  
+
   text.forEach((value, index) => {
     const outer = document.createElement("span");
     outer.className = "outer";
@@ -25,4 +24,13 @@ const enhance = id => {
   });
 }
 
-enhance("enhance");
+function checkAndEnhance() {
+  const element = document.getElementById("enhance");
+  if (element) {
+    enhanceElement(element);
+  }
+}
+
+checkAndEnhance();
+
+setInterval(checkAndEnhance, 1000);

@@ -17,7 +17,7 @@
             font-family: "Darker Grotesque", sans-serif;
             font-size: 2.707rem;
             line-height: 3.6rem;
-            color: #747474;
+            color: #5b5b5b;
             text-transform: uppercase;
             font-weight: 400;
         }
@@ -31,13 +31,35 @@
             font-family: "Darker Grotesque", sans-serif;
             font-size: 2.707rem;
             line-height: 3.6rem;
-            color: #747474;
+            color: #5b5b5b;
             text-transform: uppercase;
             font-weight: 400;
 
             @include max(800) {
                 font-size: 2.4rem;
                 line-height: 3.2rem;
+            }
+        }
+    }
+
+    &__languages {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-family: "Darker Grotesque",sans-serif;
+        font-size: 2.707rem;
+        line-height: 3.6rem;
+        color: #5b5b5b;
+        text-transform: uppercase;
+        font-weight: 400;
+        
+        & button {
+            font: inherit;
+            transition: .3s ease;
+
+            &.active {
+                font-weight: 700;
             }
         }
     }
