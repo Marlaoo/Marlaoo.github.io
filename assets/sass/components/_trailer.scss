@@ -54,7 +54,7 @@ body:has(.header:hover) {
 
     }
 
-    @include max(1280) {
+    @include max(800) {
         display: none;
 
         & + span {

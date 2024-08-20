@@ -1,0 +1,9 @@
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "no-referrer-when-downgrade" 
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.marleywork\.space$ [NC]
+RewriteRule ^(.*)$ https://marleywork.space/$1 [R=301,L]

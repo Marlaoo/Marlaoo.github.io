@@ -53,7 +53,14 @@
         }
     }
 
-    @include max(1280) {
+    &.changing {
+        & main {
+            transition: .3s ease;
+            max-height: 0;
+        }
+    }
+
+    @include max(800) {
         position: relative;
         // transform: unset;
         width: calc(100%);

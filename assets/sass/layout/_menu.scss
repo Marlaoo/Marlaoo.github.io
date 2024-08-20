@@ -1,10 +1,10 @@
 @include min(1280) {
     body:has(.menu:focus-within ),
     body:has(.menu:focus ) {
-        & .menu-toggle {
-            right: calc(max(40rem, 30%) - 9.75rem) !important;
-            z-index: 151;
-        }
+        // & .menu-toggle {
+        //     right: calc(max(40rem, 30%) - 9.75rem) !important;
+        //     z-index: 151;
+        // }
     }
 }
 
@@ -113,22 +113,21 @@
     right: 2px;
     height: calc(100% - 6.5rem);
     border-radius: 0px 0px 4rem 0px;
-    padding: 6.4rem 10rem 5rem;
+    padding: 5vh 10rem;
     width: 100%;
     max-width: 0;
     opacity: 0;
     overflow: hidden;
     transition: .5s ease-out;
     
-    &.active,
-    &:focus,
-    &:focus-within {
+    &.active {
         opacity: 1;
         background: #232222;
         max-width: max(40rem, 30%);
         z-index: 150;
 
         & .menu__list {
+            & button,
             & a {
                 opacity: 1;
                 transform: translateX(0);
@@ -156,73 +155,77 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        justify-content: space-between;
+        height: 100%;
         text-align: right;
 
         &:hover {
+            & button,
             & a {
-                opacity: .4 !important;
+                &:not(.menu__repository) {
+                    opacity: .4 !important;
+                }
             }
         }
         
+        & button,
         & a {
-            font-weight: 400;
-            font-size: 3.1rem;
-            line-height: 3.8rem;
-            text-align: right;
-            text-transform: uppercase;
-            position: relative;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(calc(100% + 5rem));
+            &:not(.menu__repository) {
+                font-weight: 400;
+                font-size: 3.1rem;
+                line-height: 3.8rem;
+                text-align: right;
+                text-transform: uppercase;
+                position: relative;
+                white-space: nowrap;
+                opacity: 0;
+                transform: translateX(calc(100% + 5rem));
 
-            &::before {
-                content: "";
-                display: inline-block;
-                width: 0;
-                height: 0;
-                border-radius: 50%;
-                background-color: #d9d9d9;
-                transition: .6s ease-out;
-                position: absolute;
-                left: -1.2rem;
-                top: 2rem;
-                transform: translate(-50%, -50%);
-            }
-
-            &:hover,
-            &.active {
-                opacity: 1 !important;
                 &::before {
-                    width: 1.5rem;
-                    height: 1.5rem;
+                    content: "";
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background-color: #d9d9d9;
+                    transition: .6s ease-out;
+                    position: absolute;
+                    left: -1.2rem;
+                    top: 2rem;
+                    transform: translate(-50%, -50%);
                 }
-            }
 
-            &:nth-child(1) {
-                transition: transform 0s;
-            }
-            &:nth-child(2) {
-                transition: transform 0s;
-            }
-            &:nth-child(3) {
-                transition: transform 0s;
-            }
-            &:nth-child(4) {
-                transition: transform 0s;
-            }
-            &:nth-child(5) {
-                transition: transform 0s;
-            }
-            
-            & span {
-                display: block;
-                font-size: 2.3rem;
-                line-height: 2.1rem;
-                font-family: 'Darker Grotesque', sans-serif;
-            }
-            
-            &:not(:last-child) {
-                margin-bottom: 8.6rem;
+                &:hover,
+                &.active {
+                    opacity: 1 !important;
+                    &::before {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+
+                &:nth-child(1) {
+                    transition: transform 0s;
+                }
+                &:nth-child(2) {
+                    transition: transform 0s;
+                }
+                &:nth-child(3) {
+                    transition: transform 0s;
+                }
+                &:nth-child(4) {
+                    transition: transform 0s;
+                }
+                &:nth-child(5) {
+                    transition: transform 0s;
+                }
+                
+                & span {
+                    display: block;
+                    font-size: 2.3rem;
+                    line-height: 2.1rem;
+                    font-family: 'Darker Grotesque', sans-serif;
+                }
             }
         }
 
